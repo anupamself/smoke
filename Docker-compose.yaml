@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+ 
+  hub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+  
+  chrome:
+    image: selenium/node-chrome-debug
+    container_name: web-chrome
+    depends_on:
+      - hub
+    ports:
+      - "5900:5900"
+    links:
+      - hub
+    environment:
+     HUB_HOST: hub
+ 
+#  firefox:
+#    image: selenium/node-firefox-debug
+#    container_name: web-firefox
+#    depends_on:
+#      - hub
+#    ports:
+#      - "5901:5900"
+#    links:
+#      - hub
+#    environment:
+#     HUB_HOST: hub
+     
+  jenkins:
+    image: jenkins/jenkins
+    privileged: true
+    user: root
+    ports:
+      - 8083:8080
+      - 50003:50000
+    container_name: suresh-jenkins
