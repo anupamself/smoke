@@ -21,7 +21,7 @@ public class surech_hero_rocks {
 		DesiredCapabilities dc=new DesiredCapabilities();
 		dc.setBrowserName("chrome");
 		
-		WebDriver driverObj=new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),dc);
+		WebDriver driverObj=new RemoteWebDriver(new URL("http://:4444/wd/hub"),dc);
 		System.out.println("hello suresh rocks");
 		driverObj.quit();
 
